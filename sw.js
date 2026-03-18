@@ -1,4 +1,4 @@
-const CACHE = 'erecept-qr-v1';
+const CACHE = 'erecept-qr-v2';
 const ASSETS = ['./index.html', './manifest.json'];
 
 self.addEventListener('install', e => {
@@ -14,11 +14,11 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  // Always network-first for API calls
-  if (e.request.url.includes('anthropic.com') || e.request.url.includes('fonts.googleapis')) {
-    e.respondWith(fetch(e.request).catch(() => new Response('offline', {status: 503})));
+  // Nekahej do externích požadavků (API, fonty) — nech je projít přímo
+  if (!e.request.url.startsWith(self.location.origin)) {
     return;
   }
+  // Lokální soubory: cache-first
   e.respondWith(
     caches.match(e.request).then(cached => cached || fetch(e.request))
   );
