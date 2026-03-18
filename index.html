@@ -10,204 +10,134 @@
 <meta name="theme-color" content="#06080F">
 <title>eRecept QR</title>
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAEv0lEQVR4nO3dv47UVhjG4Y8oGiERifS5jVSpt8oVUaXmiqioUu9tpN+GZhpSoBH7Z3YX43Psc/w+zwUYj/h+/jzGYt6c3r7/WhDql71PAPYkAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKL9uvcJHNnp9K7Jcc7nL02Ow1MCaKDVoC89vjDWE8BCvYd9iWvnIoplBPADRhr619w/VzG8TgBXzDTwL3n8OQTxlADuOcrgP+fy+YTwXXwARx/6a9wmfRcbQOLgX5O+FeICMPjXpYbQPYCbj3e9/wgO7POH37se36sQRBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQLThXobr/e5Hb0vffZr98y412rthNgDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQbbh3gZYa7d2S3kb7vLO/y2QDEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANG6BuAH6Vir9wzZAETrFoCrP630nCUbgGhdAnD1p7VeM2UDEE0ARGsegNsfeukxWzYA0ZoG4OpPb61nzAYgmgCIJgCiNQvA/T9baTlrNgDRBEC0JgG4/ZnHp5u9z6CNVjNnAxBNAIGOsgVaEADRBBDKFvhmdQC+ALOXFrNnAwSzBQRAuOF+I2y038DqbennXf2bXLcP/7xPN1WnP1cec2I2ANEEQJ0fbYUkqwLwBIi9rZ1BG4Cqyt0CAiDacE+B0ix+Ft/xSn2+vYt7ImQDEE0APJD2XUAARBMATyRtAQEQbbinQKvfdZnNoFfb8+1d/f1577PozwbgqoThrxIA4QTAEylX/yoBEE4APJB09a8SAOGGewyaZusr7ksv36Vd/atsAMKtCuB8/tLqPNjZrFf/tTNoAxBNAEx79W9h+i/Bo/0/Qr3fZfr3nz/WHeDmv/bHnJgNEO63v3KHv0oAhFsdgCdB85r96t9i9mwAogkg1OxX/1YEQDQBBHL1/65JAL4Iz+Mow99q5mwAogmAaM0CcBvEVlrOmg1ANAEQTQBEaxqA7wH01nrGbACiNQ/AFqCXHrNlAxBNAETrEoDbIFrrNVM2ANG6BWAL0ErPWbIBiNY1AFuAtXrPkA1ANAEwrC3uIARANAEwpK2+PwqA4Wz58EQARBMAQ9n60bkAiCYAhrHHP5wKgCHs9daAANjdnq/MTP8bYb1/k4tjswHY1d4vTAqA3ew9/FUCYCcjDH+VAAgnADY3ytW/SgBsbKThrxIAGxpt+KsEwEZGHP4qAbCBUYe/SgB0NvLwVwmAjkYf/qoB3wW6+Xi39ynQwAzDX2UD0MEsw1814AZgXjMN/oUNQBMzDn+VAGhg1uGvcgvECjMP/oUNwE85wvBXCYCfcJThr3ILxAJHGvwLAfCqIw7+hVsgXnTk4a+yAXjG0Qf/4s3p7fuve5/Elk6nd3ufwtBSBv8ibgNc/oKF8FDa4F/EBXAhhG9SB/8iNoCL+wOQEkP60N8XH8B9R98KBv8pAVzxeFBmDcLAv04AP2Cm2yRDv4wAFro2YHtFYdjXE0ADzw1iqzAMej8C6Mjgjs+7QEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANH+B0CCI+g0hE5FAAAAAElFTkSuQmCC">
-<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAEv0lEQVR4nO3dv47UVhjG4Y8oGiERifS5jVSpt8oVUaXmiqioUu9tpN+GZhpSoBH7Z3YX43Psc/w+zwUYj/h+/jzGYt6c3r7/WhDql71PAPYkAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKL9uvcJHNnp9K7Jcc7nL02Ow1MCaKDVoC89vjDWE8BCvYd9iWvnIoplBPADRhr619w/VzG8TgBXzDTwL3n8OQTxlADuOcrgP+fy+YTwXXwARx/6a9wmfRcbQOLgX5O+FeICMPjXpYbQPYCbj3e9/wgO7POH37se36sQRBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQLThXobr/e5Hb0vffZr98y412rthNgDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQbbh3gZYa7d2S3kb7vLO/y2QDEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANG6BuAH6Vir9wzZAETrFoCrP630nCUbgGhdAnD1p7VeM2UDEE0ARGsegNsfeukxWzYA0ZoG4OpPb61nzAYgmgCIJgCiNQvA/T9baTlrNgDRBEC0JgG4/ZnHp5u9z6CNVjNnAxBNAIGOsgVaEADRBBDKFvhmdQC+ALOXFrNnAwSzBQRAuOF+I2y038DqbennXf2bXLcP/7xPN1WnP1cec2I2ANEEQJ0fbYUkqwLwBIi9rZ1BG4Cqyt0CAiDacE+B0ix+Ft/xSn2+vYt7ImQDEE0APJD2XUAARBMATyRtAQEQbbinQKvfdZnNoFfb8+1d/f1577PozwbgqoThrxIA4QTAEylX/yoBEE4APJB09a8SAOGGewyaZusr7ksv36Vd/atsAMKtCuB8/tLqPNjZrFf/tTNoAxBNAEx79W9h+i/Bo/0/Qr3fZfr3nz/WHeDmv/bHnJgNEO63v3KHv0oAhFsdgCdB85r96t9i9mwAogkg1OxX/1YEQDQBBHL1/65JAL4Iz+Mow99q5mwAogmAaM0CcBvEVlrOmg1ANAEQTQBEaxqA7wH01nrGbACiNQ/AFqCXHrNlAxBNAETrEoDbIFrrNVM2ANG6BWAL0ErPWbIBiNY1AFuAtXrPkA1ANAEwrC3uIARANAEwpK2+PwqA4Wz58EQARBMAQ9n60bkAiCYAhrHHP5wKgCHs9daAANjdnq/MTP8bYb1/k4tjswHY1d4vTAqA3ew9/FUCYCcjDH+VAAgnADY3ytW/SgBsbKThrxIAGxpt+KsEwEZGHP4qAbCBUYe/SgB0NvLwVwmAjkYf/qoB3wW6+Xi39ynQwAzDX2UD0MEsw1814AZgXjMN/oUNQBMzDn+VAGhg1uGvcgvECjMP/oUNwE85wvBXCYCfcJThr3ILxAJHGvwLAfCqIw7+hVsgXnTk4a+yAXjG0Qf/4s3p7fuve5/Elk6nd3ufwtBSBv8ibgNc/oKF8FDa4F/EBXAhhG9SB/8iNoCL+wOQEkP60N8XH8B9R98KBv8pAVzxeFBmDcLAv04AP2Cm2yRDv4wAFro2YHtFYdjXE0ADzw1iqzAMej8C6Mjgjs+7QEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANH+B0CCI+g0hE5FAAAAAElFTkSuQmCC">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{font-size:16px;height:100%;}
-body{background:#06080F;color:#E4E8FF;font-family:'Lexend',sans-serif;min-height:100%;min-height:100dvh;-webkit-tap-highlight-color:transparent;overscroll-behavior:none;}
-#app{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;overflow-x:hidden;}
-.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);}
-.orb1{width:500px;height:500px;top:-200px;left:-150px;background:radial-gradient(circle,rgba(74,144,255,0.07) 0%,transparent 70%);}
-.orb2{width:380px;height:380px;bottom:0;right:-120px;background:radial-gradient(circle,rgba(0,212,255,0.06) 0%,transparent 70%);}
-.page{position:relative;z-index:1;width:100%;max-width:430px;padding:0 16px 80px;display:flex;flex-direction:column;gap:14px;}
-.header{padding:env(safe-area-inset-top,44px) 0 8px;padding-top:max(44px,env(safe-area-inset-top));text-align:center;animation:fadeDown .55s ease both;}
-.header-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(74,144,255,0.07);border:1px solid rgba(74,144,255,0.2);color:#4A90FF;font-family:'JetBrains Mono',monospace;font-size:.66rem;padding:5px 14px;border-radius:20px;letter-spacing:.06em;margin-bottom:18px;}
-.header-pill-dot{width:6px;height:6px;border-radius:50%;background:#00D4FF;box-shadow:0 0 6px #00D4FF;animation:blink 2s infinite;}
-.header h1{font-family:'Lexend',sans-serif;font-size:clamp(1.55rem,6vw,2rem);font-weight:700;letter-spacing:-.025em;line-height:1.15;}
-.grad{background:linear-gradient(90deg,#4A90FF 0%,#00D4FF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.header p{margin-top:8px;font-size:.75rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;}
-.steps{display:flex;align-items:flex-start;position:relative;padding:4px 0 8px;}
-.steps-line{position:absolute;top:17px;left:17px;right:17px;height:1px;background:#1A1D2E;}
-.steps-prog{position:absolute;top:17px;left:17px;height:1px;background:linear-gradient(90deg,#4A90FF,#00D4FF);transition:width .5s ease;}
-.step{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;position:relative;z-index:1;}
-.step-dot{width:34px;height:34px;border-radius:50%;border:1.5px solid #1A1D2E;background:#0C0E1A;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#4A4F70;transition:all .3s;}
-.step.active .step-dot{border-color:#4A90FF;color:#4A90FF;box-shadow:0 0 0 5px rgba(74,144,255,0.07);}
-.step.done .step-dot{background:linear-gradient(135deg,#4A90FF,#00D4FF);border-color:transparent;color:#fff;font-size:.9rem;}
-.step-lbl{font-size:.6rem;color:#4A4F70;text-align:center;max-width:58px;line-height:1.35;}
-.step.active .step-lbl{color:#4A90FF;}.step.done .step-lbl{color:#E4E8FF;}
-.card{background:#0C0E1A;border:1px solid #1A1D2E;border-radius:20px;padding:20px 18px;animation:slideUp .4s ease both;}
-.card-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
-.card-ico{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
-.card-ico.blue{background:rgba(74,144,255,0.07);}.card-ico.green{background:rgba(0,232,122,0.12);}
-.card-ttl{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#E4E8FF;}
-.card-sub{font-size:.65rem;color:#4A4F70;margin-top:2px;font-family:'JetBrains Mono',monospace;}
-.dropzone{border:1.5px dashed #1A1D2E;border-radius:14px;padding:36px 16px;text-align:center;cursor:pointer;position:relative;transition:all .2s;background:transparent;}
-.dropzone:hover,.dropzone.over{border-color:#4A90FF;background:rgba(74,144,255,0.07);}
-.dropzone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-.drop-icon{font-size:2.4rem;margin-bottom:10px;}
-.drop-main{font-size:.88rem;font-weight:600;color:#E4E8FF;margin-bottom:5px;}
-.drop-hint{font-size:.68rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;}
-.img-wrap{position:relative;border-radius:12px;overflow:hidden;background:#000;}
-.img-wrap img{width:100%;max-height:240px;object-fit:contain;display:block;}
-.img-remove{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.7);border:1px solid #1A1D2E;color:#E4E8FF;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem;}
-.pattern-wrap{display:flex;flex-direction:column;gap:8px;}
-.pat-label{font-size:.68rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;}
-.pat-textarea{width:100%;background:rgba(0,0,0,.3);border:1px solid #1A1D2E;border-radius:10px;color:#E4E8FF;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.6;padding:12px 14px;resize:none;outline:none;transition:border-color .2s;}
-.pat-textarea:focus{border-color:#4A90FF;}
-.pat-presets{display:flex;flex-wrap:wrap;gap:6px;}
-.preset-chip{padding:5px 11px;border-radius:20px;border:1px solid #1A1D2E;background:transparent;color:#7A80A8;font-family:'JetBrains Mono',monospace;font-size:.63rem;cursor:pointer;transition:all .15s;white-space:nowrap;}
-.preset-chip.sel{border-color:#4A90FF;color:#4A90FF;background:rgba(74,144,255,0.07);}
-.btn{width:100%;padding:13px;border-radius:11px;border:none;font-family:'Lexend',sans-serif;font-size:.83rem;font-weight:600;cursor:pointer;transition:all .18s;letter-spacing:.01em;}
-.btn+.btn{margin-top:8px;}
-.btn-primary{background:linear-gradient(135deg,#4A90FF 0%,#00D4FF 100%);color:#fff;box-shadow:0 4px 20px rgba(74,144,255,0.15);}
-.btn-primary:active{filter:brightness(1.1);transform:scale(0.98);}
-.btn-primary:disabled{opacity:.38;cursor:not-allowed;transform:none;}
-.btn-ghost{background:transparent;color:#4A4F70;border:1px solid #1A1D2E;}
-.btn-green{background:linear-gradient(135deg,#00B85A 0%,#00E87A 100%);color:#000;font-weight:700;box-shadow:0 4px 20px rgba(0,232,122,0.12);}
-.btn-green:disabled{opacity:.38;cursor:not-allowed;}
-.status{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:.72rem;margin-top:12px;}
-.status.loading{background:rgba(74,144,255,0.07);border:1px solid rgba(74,144,255,.2);color:#4A90FF;}
-.status.error{background:rgba(255,77,106,0.12);border:1px solid rgba(255,77,106,.25);color:#FF4D6A;}
-.status.ok{background:rgba(0,232,122,0.12);border:1px solid rgba(0,232,122,.2);color:#00E87A;}
-.spinner{width:13px;height:13px;border:2px solid rgba(74,144,255,.25);border-top-color:#4A90FF;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
-.matches-list{display:flex;flex-direction:column;gap:8px;}
-.match-item{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-radius:11px;border:1.5px solid #1A1D2E;background:transparent;cursor:pointer;transition:all .18s;gap:10px;width:100%;text-align:left;}
-.match-item.sel{border-color:#00D4FF;background:rgba(74,144,255,0.07);box-shadow:0 0 0 3px rgba(0,212,255,.1);}
-.match-code{font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:700;color:#E4E8FF;letter-spacing:.08em;}
-.match-ctx{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#4A4F70;margin-top:3px;}
-.match-badge{font-size:.6rem;padding:3px 9px;border-radius:20px;white-space:nowrap;font-family:'JetBrains Mono',monospace;background:rgba(74,144,255,0.07);color:#4A90FF;border:1px solid rgba(74,144,255,.2);}
-.match-item.sel .match-badge{background:rgba(0,212,255,.1);color:#00D4FF;border-color:rgba(0,212,255,.3);}
-.match-check{width:20px;height:20px;border-radius:50%;border:1.5px solid #1A1D2E;display:flex;align-items:center;justify-content:center;font-size:.7rem;transition:all .2s;flex-shrink:0;}
-.match-item.sel .match-check{background:#00D4FF;border-color:#00D4FF;color:#000;}
-.qr-section{display:flex;flex-direction:column;align-items:center;gap:18px;}
-.qr-frame{background:#fff;padding:18px;border-radius:16px;display:inline-block;box-shadow:0 0 0 1px #1A1D2E,0 20px 60px rgba(74,144,255,.12);}
-.qr-frame canvas{display:block;}
-.validity{width:100%;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;}
-.validity.ok{background:rgba(0,232,122,0.12);border:1px solid rgba(0,232,122,.2);}
-.validity.warn{background:rgba(255,184,48,0.12);border:1px solid rgba(255,184,48,.25);}
-.validity.expired{background:rgba(255,77,106,0.12);border:1px solid rgba(255,77,106,.25);}
-.val-icon{font-size:1.4rem;flex-shrink:0;}
-.val-title{font-weight:600;font-size:.85rem;}
-.validity.ok .val-title{color:#00E87A;}.validity.warn .val-title{color:#FFB830;}.validity.expired .val-title{color:#FF4D6A;}
-.val-sub{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#7A80A8;margin-top:3px;}
-.code-display{text-align:center;}
-.code-big{font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;letter-spacing:.2em;color:#E4E8FF;background:#111320;padding:10px 20px;border-radius:10px;display:inline-block;border:1px solid #252840;}
-.code-label{font-size:.65rem;color:#4A4F70;margin-top:6px;letter-spacing:.06em;font-family:'JetBrains Mono',monospace;}
-.share-row{display:flex;gap:8px;width:100%;}
-.share-row .btn{flex:1;margin:0;}
-.sms-preview{background:rgba(0,0,0,.3);border:1px solid #1A1D2E;border-radius:10px;padding:12px 14px;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:#7A80A8;line-height:1.7;white-space:pre-wrap;word-break:break-all;max-height:90px;overflow-y:auto;}
-.sms-highlight{color:#00D4FF;font-weight:700;background:rgba(0,212,255,.1);border-radius:3px;padding:0 2px;}
-.date-row{display:flex;gap:8px;align-items:center;}
-.date-input{flex:1;background:rgba(0,0,0,.3);border:1px solid #1A1D2E;border-radius:10px;color:#E4E8FF;font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:10px 13px;outline:none;transition:border-color .2s;}
-.date-input:focus{border-color:#4A90FF;}
-.date-label{font-size:.65rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;white-space:nowrap;}
-.hidden{display:none;}
-@keyframes fadeDown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
-@keyframes slideUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+html,body{height:100%;background:#06080F;color:#E4E8FF;font-family:'Lexend',sans-serif;-webkit-tap-highlight-color:transparent;overscroll-behavior:none;}
+
+/* ── Layout ── */
+#app{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:env(safe-area-inset-top,0px) 20px env(safe-area-inset-bottom,0px);}
+.orb{position:fixed;border-radius:50%;pointer-events:none;filter:blur(100px);}
+.orb1{width:500px;height:500px;top:-180px;left:-150px;background:radial-gradient(circle,rgba(74,144,255,0.08) 0%,transparent 70%);}
+.orb2{width:400px;height:400px;bottom:-100px;right:-120px;background:radial-gradient(circle,rgba(0,212,255,0.06) 0%,transparent 70%);}
+
+/* ── SCREEN BASE ── */
+.screen{display:none;flex-direction:column;align-items:center;gap:24px;width:100%;max-width:400px;text-align:center;animation:fadeIn .3s ease both;}
+.screen.active{display:flex;}
+
+/* ── SCREEN: CAMERA ── */
+.cam-icon{width:100px;height:100px;border-radius:28px;background:linear-gradient(135deg,rgba(74,144,255,0.15),rgba(0,212,255,0.1));border:1px solid rgba(74,144,255,0.2);display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:8px;}
+.cam-title{font-size:1.6rem;font-weight:700;letter-spacing:-.02em;line-height:1.2;}
+.cam-title .grad{background:linear-gradient(90deg,#4A90FF,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.cam-sub{font-size:.82rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;line-height:1.6;}
+
+.cam-btn{
+  width:100%;padding:18px;border-radius:16px;border:none;
+  background:linear-gradient(135deg,#4A90FF,#00D4FF);
+  color:#fff;font-family:'Lexend',sans-serif;font-size:1rem;font-weight:700;
+  cursor:pointer;position:relative;overflow:hidden;
+  box-shadow:0 8px 32px rgba(74,144,255,0.3);
+  transition:transform .15s,box-shadow .15s;
+}
+.cam-btn:active{transform:scale(0.97);box-shadow:0 4px 16px rgba(74,144,255,0.2);}
+.cam-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+
+.cam-hint{font-size:.68rem;color:#2A2D40;font-family:'JetBrains Mono',monospace;}
+
+/* ── SCREEN: LOADING ── */
+.loading-ring{width:80px;height:80px;border-radius:50%;border:3px solid rgba(74,144,255,0.15);border-top-color:#4A90FF;animation:spin 1s linear infinite;}
+.loading-title{font-size:1.1rem;font-weight:600;}
+.loading-sub{font-size:.75rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;}
+
+/* ── SCREEN: QR ── */
+.qr-validity{width:100%;border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px;text-align:left;}
+.qr-validity.ok{background:rgba(0,232,122,0.1);border:1px solid rgba(0,232,122,0.2);}
+.qr-validity.warn{background:rgba(255,184,48,0.1);border:1px solid rgba(255,184,48,0.25);}
+.qr-validity.expired{background:rgba(255,77,106,0.1);border:1px solid rgba(255,77,106,0.25);}
+.val-icon{font-size:1.6rem;flex-shrink:0;}
+.val-title{font-weight:700;font-size:.9rem;}
+.qr-validity.ok .val-title{color:#00E87A;}
+.qr-validity.warn .val-title{color:#FFB830;}
+.qr-validity.expired .val-title{color:#FF4D6A;}
+.val-sub{font-size:.7rem;color:#7A80A8;font-family:'JetBrains Mono',monospace;margin-top:3px;}
+
+.qr-frame{background:#fff;padding:20px;border-radius:20px;box-shadow:0 0 0 1px rgba(255,255,255,0.05),0 24px 64px rgba(74,144,255,0.15);}
+.qr-frame canvas{display:block;image-rendering:pixelated;}
+
+.code-pill{background:#0C0E1A;border:1px solid #1A1D2E;border-radius:12px;padding:12px 20px;font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;letter-spacing:.18em;color:#E4E8FF;}
+.code-lbl{font-size:.65rem;color:#2A2D40;font-family:'JetBrains Mono',monospace;margin-top:6px;}
+
+.btn-row{display:flex;gap:10px;width:100%;}
+.btn-row button{flex:1;padding:13px;border-radius:12px;border:none;font-family:'Lexend',sans-serif;font-size:.83rem;font-weight:600;cursor:pointer;transition:all .15s;}
+.btn-share{background:linear-gradient(135deg,#4A90FF,#00D4FF);color:#fff;box-shadow:0 4px 16px rgba(74,144,255,0.2);}
+.btn-share:active{transform:scale(0.97);}
+.btn-again{background:transparent;color:#4A4F70;border:1px solid #1A1D2E;}
+.btn-again:active{border-color:#4A90FF;color:#4A90FF;}
+
+/* ── SCREEN: ERROR ── */
+.err-icon{font-size:3rem;}
+.err-title{font-size:1.1rem;font-weight:700;color:#FF4D6A;}
+.err-msg{font-size:.78rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;line-height:1.6;max-width:300px;}
+.btn-retry{width:100%;padding:14px;border-radius:12px;border:none;background:rgba(255,77,106,0.1);border:1px solid rgba(255,77,106,0.2);color:#FF4D6A;font-family:'Lexend',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-@keyframes popIn{0%{transform:scale(.85);opacity:0}100%{transform:scale(1);opacity:1}}
-.pop{animation:popIn .35s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes popIn{0%{transform:scale(.8);opacity:0}100%{transform:scale(1);opacity:1}}
+.pop{animation:popIn .4s cubic-bezier(.34,1.56,.64,1) both;}
 </style>
 </head>
 <body>
 <div id="app">
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
-  <div class="page">
 
-    <!-- HEADER -->
-    <div class="header">
-      <div class="header-pill"><span class="header-pill-dot"></span> eRecept &middot; QR generátor</div>
-      <h1>SMS <span class="grad">&rarr; QR</span></h1>
-      <p>Vyfotografuj SMS &middot; extrahuj kód &middot; zobraz QR</p>
+  <!-- SCREEN 1: KAMERA -->
+  <div class="screen active" id="screenCamera">
+    <div class="cam-icon">📱</div>
+    <div>
+      <div class="cam-title">SMS <span class="grad">→ QR</span></div>
+      <div style="height:10px"></div>
+      <div class="cam-sub">Vyfoťte displej s SMS<br>eReceptu — vše ostatní<br>proběhne automaticky</div>
     </div>
-
-    <!-- STEPS -->
-    <div class="steps" id="steps">
-      <div class="steps-line"></div>
-      <div class="steps-prog" id="stepsProg" style="width:0%"></div>
-      <div class="step active" id="step0"><div class="step-dot">01</div><div class="step-lbl">Snímek</div></div>
-      <div class="step" id="step1"><div class="step-dot">02</div><div class="step-lbl">Vzor</div></div>
-      <div class="step" id="step2"><div class="step-dot">03</div><div class="step-lbl">Výběr</div></div>
-      <div class="step" id="step3"><div class="step-dot">04</div><div class="step-lbl">QR</div></div>
+    <div class="cam-btn">
+      <input type="file" id="fileInput" accept="image/*" capture="environment">
+      📷&nbsp; Vyfotit SMS
     </div>
+    <div class="cam-hint">nebo vyberte snímek z galerie</div>
+  </div>
 
-    <!-- CARD 1 — SNÍMEK -->
-    <div class="card">
-      <div class="card-head">
-        <div class="card-ico blue">📷</div>
-        <div><div class="card-ttl">Snímek SMS</div><div class="card-sub">Nahrát fotku displeje s SMS zprávou</div></div>
-      </div>
-      <div id="dropzone" class="dropzone">
-        <input type="file" id="fileInput" accept="image/*" capture="environment">
-        <div class="drop-icon">📱</div>
-        <div class="drop-main">Nahrát fotku displeje</div>
-        <div class="drop-hint">Klepni nebo přetáhni · JPG PNG HEIC</div>
-      </div>
-      <div id="imgPreview" class="img-wrap hidden">
-        <img id="previewImg" alt="SMS snímek">
-        <button class="img-remove" id="btnRemoveImg">✕</button>
-      </div>
+  <!-- SCREEN 2: NAČÍTÁNÍ -->
+  <div class="screen" id="screenLoading">
+    <div class="loading-ring"></div>
+    <div>
+      <div class="loading-title" id="loadingTitle">Rozpoznávám kód…</div>
+      <div class="loading-sub" id="loadingSub">AI čte SMS zprávu</div>
     </div>
+  </div>
 
-    <!-- CARD 2 — VZOR -->
-    <div class="card">
-      <div class="card-head">
-        <div class="card-ico blue">🔍</div>
-        <div><div class="card-ttl">Co hledat</div><div class="card-sub">Předvolba nebo vlastní vzor</div></div>
-      </div>
-      <div class="pattern-wrap">
-        <div class="pat-presets" id="presets"></div>
-        <div class="pat-label">Vlastní popis vzoru:</div>
-        <textarea class="pat-textarea" id="patternInput" rows="2"></textarea>
-      </div>
-      <button class="btn btn-primary" id="btnAnalyze" style="margin-top:14px" disabled>✦ Spustit analýzu</button>
-      <div id="statusBox" class="hidden"></div>
+  <!-- SCREEN 3: QR KÓD -->
+  <div class="screen" id="screenQR">
+    <div id="validityBanner" style="display:none;width:100%"></div>
+    <div class="qr-frame pop">
+      <canvas id="qrCanvas" width="260" height="260"></canvas>
     </div>
-
-    <!-- CARD 3 — VÝBĚR (hidden until results) -->
-    <div class="card hidden" id="cardMatches">
-      <div class="card-head">
-        <div class="card-ico green">⚡</div>
-        <div><div class="card-ttl">Nalezené shody</div><div class="card-sub">Vyberte hodnotu pro QR kód</div></div>
-      </div>
-      <div class="pat-label" id="smsLabel" style="margin-bottom:6px">Text SMS:</div>
-      <div class="sms-preview" id="smsPreview"></div>
-      <div style="height:12px"></div>
-      <div class="matches-list" id="matchesList"></div>
-      <div style="margin-top:16px">
-        <div class="pat-label" style="margin-bottom:7px">Datum platnosti (volitelné):</div>
-        <div class="date-row">
-          <span class="date-label">Platný do:</span>
-          <input type="text" class="date-input" id="validityInput" placeholder="dd.mm.yyyy">
-        </div>
-      </div>
-      <button class="btn btn-green" id="btnGenQR" style="margin-top:14px" disabled>⬡ Vygenerovat QR kód</button>
+    <div>
+      <div class="code-pill" id="codeDisplay"></div>
+      <div class="code-lbl">Identifikátor eReceptu</div>
     </div>
-
-    <!-- CARD 4 — QR (hidden until generated) -->
-    <div class="card pop hidden" id="cardQR">
-      <div class="card-head">
-        <div class="card-ico green">✅</div>
-        <div><div class="card-ttl">QR kód eReceptu</div><div class="card-sub">Naskenujte pro předání receptu</div></div>
-      </div>
-      <div class="qr-section">
-        <div id="validityBanner" class="hidden"></div>
-        <div class="qr-frame"><canvas id="qrCanvas" width="260" height="260"></canvas></div>
-        <div class="code-display">
-          <div class="code-big" id="codeDisplay"></div>
-          <div class="code-label" id="codeLabel"></div>
-        </div>
-        <div class="share-row" id="shareRow"></div>
-        <button class="btn btn-ghost" id="btnBackToMatches">← Zpět na výběr</button>
-        <button class="btn btn-ghost" id="btnReset">↺ Nová SMS</button>
-      </div>
+    <div class="btn-row">
+      <button class="btn-share" id="btnShare">⬆ Sdílet</button>
+      <button class="btn-again" id="btnAgain">↺ Nová SMS</button>
     </div>
+  </div>
 
+  <!-- SCREEN 4: CHYBA -->
+  <div class="screen" id="screenError">
+    <div class="err-icon">🔍</div>
+    <div class="err-title">Kód nenalezen</div>
+    <div class="err-msg" id="errMsg">V SMS nebyl nalezen platný kód eReceptu.</div>
+    <button class="btn-retry" id="btnRetry">↺ Zkusit znovu</button>
   </div>
 </div>
 
@@ -217,298 +147,181 @@ const QRGen = (() => {
   const gfExp = new Uint8Array(512), gfLog = new Uint8Array(256);
   (() => {
     let x = 1;
-    for (let i = 0; i < 255; i++) { gfExp[i] = x; gfLog[x] = i; x <<= 1; if (x & 256) x ^= 285; }
-    for (let i = 255; i < 512; i++) gfExp[i] = gfExp[i - 255];
+    for (let i = 0; i < 255; i++) { gfExp[i]=x; gfLog[x]=i; x<<=1; if(x&256) x^=285; }
+    for (let i = 255; i < 512; i++) gfExp[i]=gfExp[i-255];
   })();
-  const mul = (x, y) => x && y ? gfExp[gfLog[x] + gfLog[y]] : 0;
-  const polyMul = (p, q) => {
-    const r = new Uint8Array(p.length + q.length - 1);
-    for (let i = 0; i < p.length; i++) for (let j = 0; j < q.length; j++) r[i+j] ^= mul(p[i], q[j]);
-    return r;
-  };
-  const genPoly = n => { let g = new Uint8Array([1]); for (let i = 0; i < n; i++) g = polyMul(g, new Uint8Array([1, gfExp[i]])); return g; };
-  const rsEncode = (data, n) => {
-    const gen = genPoly(n), msg = new Uint8Array(data.length + n); msg.set(data);
-    for (let i = 0; i < data.length; i++) { const c = msg[i]; if (c) for (let j = 0; j < gen.length; j++) msg[i+j] ^= mul(gen[j], c); }
-    return msg.slice(data.length);
-  };
-  const ALNUM = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:";
-  const VCAP = [null,[16,10],[28,16],[44,26],[64,18],[86,24]];
-  function buildBits(text) {
-    const upper = text.toUpperCase(), isA = [...upper].every(c => ALNUM.includes(c)), src = isA ? upper : text;
-    let version = -1;
-    for (let v = 1; v <= 5; v++) {
-      const [dc] = VCAP[v], ccBits = isA ? 9 : 8, dataBits = dc*8-4-ccBits;
-      const maxCh = isA ? Math.floor(dataBits/11)*2+(dataBits%11>=6?1:0) : Math.floor(dataBits/8);
-      if (src.length <= maxCh) { version = v; break; }
-    }
-    if (version < 0) throw new Error("Text je příliš dlouhý");
-    const [totalDC, ecCount] = VCAP[version], bits = [];
-    const push = (val, len) => { for (let i = len-1; i >= 0; i--) bits.push((val>>i)&1); };
-    const ccBits = isA ? 9 : 8;
-    push(isA ? 2 : 4, 4); push(src.length, ccBits);
-    if (isA) { for (let i = 0; i < src.length; i += 2) { if (i+1 < src.length) push(ALNUM.indexOf(src[i])*45+ALNUM.indexOf(src[i+1]),11); else push(ALNUM.indexOf(src[i]),6); } }
-    else { for (const c of src) push(c.charCodeAt(0), 8); }
-    for (let i = 0; i < 4 && bits.length < totalDC*8; i++) bits.push(0);
-    while (bits.length % 8) bits.push(0);
-    const pad = [0xEC, 0x11]; let pi = 0;
-    while (bits.length < totalDC*8) push(pad[pi++%2], 8);
-    const data = new Uint8Array(totalDC);
-    for (let i = 0; i < totalDC; i++) { let b = 0; for (let j = 0; j < 8; j++) b = (b<<1)|bits[i*8+j]; data[i] = b; }
-    return { version, bytes: [...data, ...rsEncode(data, ecCount)] };
+  const mul=(x,y)=>x&&y?gfExp[gfLog[x]+gfLog[y]]:0;
+  const polyMul=(p,q)=>{const r=new Uint8Array(p.length+q.length-1);for(let i=0;i<p.length;i++)for(let j=0;j<q.length;j++)r[i+j]^=mul(p[i],q[j]);return r;};
+  const genPoly=n=>{let g=new Uint8Array([1]);for(let i=0;i<n;i++)g=polyMul(g,new Uint8Array([1,gfExp[i]]));return g;};
+  const rsEncode=(data,n)=>{const gen=genPoly(n),msg=new Uint8Array(data.length+n);msg.set(data);for(let i=0;i<data.length;i++){const c=msg[i];if(c)for(let j=0;j<gen.length;j++)msg[i+j]^=mul(gen[j],c);}return msg.slice(data.length);};
+  const ALNUM="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:";
+  const VCAP=[null,[16,10],[28,16],[44,26],[64,18],[86,24]];
+  function buildBits(text){
+    const upper=text.toUpperCase(),isA=[...upper].every(c=>ALNUM.includes(c)),src=isA?upper:text;
+    let version=-1;
+    for(let v=1;v<=5;v++){const[dc]=VCAP[v],ccBits=isA?9:8,dataBits=dc*8-4-ccBits,maxCh=isA?Math.floor(dataBits/11)*2+(dataBits%11>=6?1:0):Math.floor(dataBits/8);if(src.length<=maxCh){version=v;break;}}
+    if(version<0)throw new Error("Příliš dlouhý");
+    const[totalDC,ecCount]=VCAP[version],bits=[],push=(val,len)=>{for(let i=len-1;i>=0;i--)bits.push((val>>i)&1);},ccBits=isA?9:8;
+    push(isA?2:4,4);push(src.length,ccBits);
+    if(isA){for(let i=0;i<src.length;i+=2){if(i+1<src.length)push(ALNUM.indexOf(src[i])*45+ALNUM.indexOf(src[i+1]),11);else push(ALNUM.indexOf(src[i]),6);}}
+    else{for(const c of src)push(c.charCodeAt(0),8);}
+    for(let i=0;i<4&&bits.length<totalDC*8;i++)bits.push(0);
+    while(bits.length%8)bits.push(0);
+    const pad=[0xEC,0x11];let pi=0;while(bits.length<totalDC*8)push(pad[pi++%2],8);
+    const data=new Uint8Array(totalDC);
+    for(let i=0;i<totalDC;i++){let b=0;for(let j=0;j<8;j++)b=(b<<1)|bits[i*8+j];data[i]=b;}
+    return{version,bytes:[...data,...rsEncode(data,ecCount)]};
   }
-  const FINDER = [[1,1,1,1,1,1,1],[1,0,0,0,0,0,1],[1,0,1,1,1,0,1],[1,0,1,1,1,0,1],[1,0,1,1,1,0,1],[1,0,0,0,0,0,1],[1,1,1,1,1,1,1]];
-  function buildMatrix(version, bytes) {
-    const sz = version*4+17, m = Array.from({length:sz}, ()=>new Array(sz).fill(-1));
-    const set = (r,c,v) => { if(r>=0&&r<sz&&c>=0&&c<sz) m[r][c]=v; };
-    const pf = (r,c) => { for(let i=0;i<7;i++) for(let j=0;j<7;j++) set(r+i,c+j,FINDER[i][j]); for(let i=-1;i<=7;i++){set(r+i,c-1,0);set(r+i,c+7,0);set(r-1,c+i,0);set(r+7,c+i,0);} };
-    pf(0,0); pf(0,sz-7); pf(sz-7,0);
+  const FINDER=[[1,1,1,1,1,1,1],[1,0,0,0,0,0,1],[1,0,1,1,1,0,1],[1,0,1,1,1,0,1],[1,0,1,1,1,0,1],[1,0,0,0,0,0,1],[1,1,1,1,1,1,1]];
+  function buildMatrix(version,bytes){
+    const sz=version*4+17,m=Array.from({length:sz},()=>new Array(sz).fill(-1));
+    const set=(r,c,v)=>{if(r>=0&&r<sz&&c>=0&&c<sz)m[r][c]=v;};
+    const pf=(r,c)=>{for(let i=0;i<7;i++)for(let j=0;j<7;j++)set(r+i,c+j,FINDER[i][j]);for(let i=-1;i<=7;i++){set(r+i,c-1,0);set(r+i,c+7,0);set(r-1,c+i,0);set(r+7,c+i,0);}};
+    pf(0,0);pf(0,sz-7);pf(sz-7,0);
     for(let i=8;i<sz-8;i++){set(6,i,i%2===0?1:0);set(i,6,i%2===0?1:0);}
     set(4*version+9,8,1);
-    const APOS=[null,null,[6,18],[6,22],[6,26],[6,30]], ap=APOS[version];
-    if(ap) for(const r of ap) for(const c of ap){ if(m[r][c]!==-1) continue; for(let i=-2;i<=2;i++) for(let j=-2;j<=2;j++) set(r+i,c+j,(Math.abs(i)===2||Math.abs(j)===2||i===0&&j===0)?1:0); }
+    const APOS=[null,null,[6,18],[6,22],[6,26],[6,30]],ap=APOS[version];
+    if(ap)for(const r of ap)for(const c of ap){if(m[r][c]!==-1)continue;for(let i=-2;i<=2;i++)for(let j=-2;j<=2;j++)set(r+i,c+j,(Math.abs(i)===2||Math.abs(j)===2||i===0&&j===0)?1:0);}
     const fmt=[1,0,1,0,1,0,0,0,0,0,1,0,0,1,0];
-    for(let i=0;i<6;i++){set(8,i,fmt[i]);set(i,8,fmt[i]);} set(8,7,fmt[6]);set(7,8,fmt[6]);set(8,8,fmt[7]);
+    for(let i=0;i<6;i++){set(8,i,fmt[i]);set(i,8,fmt[i]);}set(8,7,fmt[6]);set(7,8,fmt[6]);set(8,8,fmt[7]);
     for(let i=0;i<7;i++){set(sz-1-i,8,fmt[8+i]);set(8,sz-1-i,fmt[8+i]);}
-    const allBits=[]; for(const b of bytes) for(let i=7;i>=0;i--) allBits.push((b>>i)&1);
-    let bi=0, col=sz-1, up=true;
-    while(col>=0){ if(col===6) col--; for(let ro=0;ro<sz;ro++){ const row=up?sz-1-ro:ro; for(let dc=0;dc<2;dc++){ const c=col-dc; if(m[row][c]===-1){ const bit=bi<allBits.length?allBits[bi++]:0; m[row][c]=((row+c)%2===0)?bit^1:bit; } } } col-=2; up=!up; }
+    const allBits=[];for(const b of bytes)for(let i=7;i>=0;i--)allBits.push((b>>i)&1);
+    let bi=0,col=sz-1,up=true;
+    while(col>=0){if(col===6)col--;for(let ro=0;ro<sz;ro++){const row=up?sz-1-ro:ro;for(let dc=0;dc<2;dc++){const c=col-dc;if(m[row][c]===-1){const bit=bi<allBits.length?allBits[bi++]:0;m[row][c]=((row+c)%2===0)?bit^1:bit;}}}col-=2;up=!up;}
     return m;
   }
-  function drawToCanvas(text, canvas) {
-    const {version, bytes} = buildBits(text), matrix = buildMatrix(version, bytes);
-    const n = matrix.length, size = canvas.width, scale = Math.floor(size/n), margin = Math.floor((size-n*scale)/2);
-    const ctx = canvas.getContext("2d");
-    ctx.fillStyle="#fff"; ctx.fillRect(0,0,size,size); ctx.fillStyle="#000";
-    for(let r=0;r<n;r++) for(let c=0;c<n;c++) if(matrix[r][c]===1) ctx.fillRect(margin+c*scale,margin+r*scale,scale,scale);
+  function draw(text,canvas){
+    const{version,bytes}=buildBits(text),matrix=buildMatrix(version,bytes),n=matrix.length;
+    const size=canvas.width,scale=Math.floor(size/n),margin=Math.floor((size-n*scale)/2);
+    const ctx=canvas.getContext("2d");
+    ctx.fillStyle="#fff";ctx.fillRect(0,0,size,size);ctx.fillStyle="#000";
+    for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(matrix[r][c]===1)ctx.fillRect(margin+c*scale,margin+r*scale,scale,scale);
   }
-  return { drawToCanvas };
+  return{draw};
 })();
 
-// ─── STATE ────────────────────────────────────────────────────────────────────
-let state = { image: null, matches: [], selMatch: null, validityDate: "", smsText: "" };
-
-const PRESETS = [
-  { label: "eRecept kód", desc: "12místný alfanumerický kód eReceptu (z textu i z URL parametru i=)" },
-  { label: "URL odkaz", desc: "Webový odkaz začínající https://" },
-  { label: "OTP / PIN", desc: "Jednorázový číselný kód (4–8 číslic)" },
-];
-let selPreset = 0;
-
-// ─── DOM REFS ─────────────────────────────────────────────────────────────────
-const $id = id => document.getElementById(id);
-const fileInput = $id("fileInput"), dropzone = $id("dropzone"), imgPreview = $id("imgPreview"), previewImg = $id("previewImg");
-const patternInput = $id("patternInput"), btnAnalyze = $id("btnAnalyze"), statusBox = $id("statusBox");
-const cardMatches = $id("cardMatches"), matchesList = $id("matchesList"), smsPreview = $id("smsPreview");
-const validityInput = $id("validityInput"), btnGenQR = $id("btnGenQR");
-const cardQR = $id("cardQR"), qrCanvas = $id("qrCanvas"), codeDisplay = $id("codeDisplay"), codeLabel = $id("codeLabel");
-const validityBanner = $id("validityBanner"), shareRow = $id("shareRow");
-
-// ─── INIT PRESETS ─────────────────────────────────────────────────────────────
-const presetsEl = $id("presets");
-PRESETS.forEach((p, i) => {
-  const btn = document.createElement("button");
-  btn.className = "preset-chip" + (i === 0 ? " sel" : "");
-  btn.textContent = p.label;
-  btn.onclick = () => {
-    selPreset = i; patternInput.value = p.desc;
-    document.querySelectorAll(".preset-chip").forEach((b,j) => b.classList.toggle("sel", j===i));
-  };
-  presetsEl.appendChild(btn);
-});
-patternInput.value = PRESETS[0].desc;
-patternInput.oninput = () => {
-  selPreset = -1; document.querySelectorAll(".preset-chip").forEach(b => b.classList.remove("sel"));
-};
-
-// ─── STEPS ────────────────────────────────────────────────────────────────────
-function updateSteps(idx) {
-  const pcts = ["0%","33%","66%","100%"];
-  $id("stepsProg").style.width = pcts[idx] || "0%";
-  for (let i = 0; i < 4; i++) {
-    const s = $id("step"+i);
-    s.classList.toggle("done", i < idx);
-    s.classList.toggle("active", i === idx);
-    s.querySelector(".step-dot").textContent = i < idx ? "✓" : ("0"+(i+1)).slice(-2);
-  }
+// ─── SCREENS ──────────────────────────────────────────────────────────────────
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
 
-// ─── STATUS ───────────────────────────────────────────────────────────────────
-function showStatus(msg, type) {
-  statusBox.className = "status " + type;
-  statusBox.innerHTML = (type==="loading" ? '<div class="spinner"></div>' : "") + msg;
-  statusBox.classList.remove("hidden");
-}
-function hideStatus() { statusBox.classList.add("hidden"); }
-
-// ─── FILE HANDLING ────────────────────────────────────────────────────────────
-function handleFile(file) {
-  if (!file || !file.type.startsWith("image/")) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    state.image = { dataUrl: e.target.result, base64: e.target.result.split(",")[1], mime: file.type };
-    previewImg.src = e.target.result;
-    dropzone.classList.add("hidden"); imgPreview.classList.remove("hidden");
-    btnAnalyze.disabled = false;
-    cardMatches.classList.add("hidden"); cardQR.classList.add("hidden");
-    state.matches = []; state.selMatch = null; state.smsText = "";
-    updateSteps(0); hideStatus();
-  };
-  reader.readAsDataURL(file);
-}
-fileInput.onchange = e => handleFile(e.target.files[0]);
-dropzone.ondragover = e => { e.preventDefault(); dropzone.classList.add("over"); };
-dropzone.ondragleave = () => dropzone.classList.remove("over");
-dropzone.ondrop = e => { e.preventDefault(); dropzone.classList.remove("over"); handleFile(e.dataTransfer.files[0]); };
-
-$id("btnRemoveImg").onclick = reset;
-
-// ─── ANALYZE ──────────────────────────────────────────────────────────────────
-btnAnalyze.onclick = async () => {
-  if (!state.image) return;
-  btnAnalyze.disabled = true;
-  showStatus("Analyzuji snímek pomocí AI…", "loading");
-  updateSteps(1);
-  try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514", max_tokens: 1000,
-        messages: [{ role: "user", content: [
-          { type: "image", source: { type: "base64", media_type: state.image.mime, data: state.image.base64 } },
-          { type: "text", text: `Na obrázku je fotografie displeje telefonu se SMS zprávou.
-
-Tvůj úkol:
-1. Přečti celý text SMS zprávy (ignoruj UI prvky, stavové lišty).
-2. Najdi všechny výskyty vzoru: "${patternInput.value.trim()}"
-3. Pro eRecept kód hledej: 12místný alfanumerický kód (A-Z + 0-9). Může být s mezerami (PO4V M7IW G9LB) nebo bez (PO4VM7IWG9LB). Hledej ho i v URL parametru "i=".
-4. Extrahuj datum platnosti (dd.mm.yyyy za "platný do" nebo z URL parametru "s=").
-
-Odpověz POUZE jako JSON bez markdown:
-{"sms_text":"celý text","matches":[{"value":"PO4VM7IWG9LB","context":"kontext","source":"text nebo url"}],"validity_date":"25.12.2025 nebo null"}` }
-        ]}]
-      })
-    });
-    const data = await res.json();
-    if (data.error) throw new Error(data.error.message);
-    const raw = data.content?.find(b=>b.type==="text")?.text?.trim() || "{}";
-    const parsed = JSON.parse(raw.replace(/```json|```/g,"").trim());
-    state.smsText = parsed.sms_text || "";
-    state.matches = (parsed.matches||[]).map(m=>({...m, value:(m.value||"").replace(/[^A-Z0-9]/gi,"").toUpperCase()})).filter(m=>m.value.length>=4);
-    state.validityDate = (parsed.validity_date && parsed.validity_date!=="null") ? parsed.validity_date : "";
-    validityInput.value = state.validityDate;
-
-    if (state.matches.length === 0) {
-      showStatus("Žádná shoda — zkuste upravit vzor.", "error");
-      updateSteps(1);
-    } else {
-      renderMatches();
-      cardMatches.classList.remove("hidden");
-      if (state.matches.length === 1) { selectMatch(0); showStatus("Nalezena 1 shoda: " + state.matches[0].value, "ok"); }
-      else showStatus("Nalezeno " + state.matches.length + " shody — vyberte níže.", "ok");
-      updateSteps(2);
-    }
-  } catch(e) {
-    showStatus("Chyba: " + e.message, "error");
-    updateSteps(1);
-  }
-  btnAnalyze.disabled = false;
-};
-
-// ─── MATCHES ──────────────────────────────────────────────────────────────────
-function renderMatches() {
-  smsPreview.innerHTML = state.smsText;
-  matchesList.innerHTML = "";
-  state.matches.forEach((m, i) => {
-    const btn = document.createElement("button");
-    btn.className = "match-item" + (state.selMatch===i?" sel":"");
-    btn.innerHTML = `<div style="flex:1"><div class="match-code">${m.value}</div>${m.context?`<div class="match-ctx">…${m.context}…</div>`:""}</div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px"><div class="match-badge">${m.source==="url"?"z URL":"z textu"}</div><div class="match-check">${state.selMatch===i?"✓":""}</div></div>`;
-    btn.onclick = () => selectMatch(i);
-    matchesList.appendChild(btn);
-  });
-}
-function selectMatch(i) {
-  state.selMatch = i;
-  btnGenQR.disabled = false;
-  // highlight in sms
-  if (state.smsText && state.matches[i]) {
-    const code = state.matches[i].value;
-    smsPreview.innerHTML = state.smsText.replace(new RegExp(code.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"gi"), m=>`<span class="sms-highlight">${m}</span>`);
-  }
-  document.querySelectorAll(".match-item").forEach((el,j)=>{
-    el.classList.toggle("sel",j===i);
-    el.querySelector(".match-check").textContent = j===i?"✓":"";
-  });
-}
-validityInput.oninput = e => { state.validityDate = e.target.value; };
-
-// ─── GENERATE QR ──────────────────────────────────────────────────────────────
-btnGenQR.onclick = () => {
-  if (state.selMatch === null) return;
-  const code = state.matches[state.selMatch].value;
-  try {
-    QRGen.drawToCanvas(code, qrCanvas);
-    codeDisplay.textContent = (code.match(/.{1,4}/g)||[]).join(" ");
-    codeLabel.textContent = "Identifikátor eReceptu · " + code.length + " znaků";
-    renderValidity();
-    renderShareButtons(code);
-    cardQR.classList.remove("hidden");
-    cardQR.scrollIntoView({behavior:"smooth", block:"start"});
-    updateSteps(3);
-  } catch(e) { showStatus("Chyba QR: " + e.message, "error"); }
-};
-
-function renderValidity() {
-  const vd = validityInput.value || state.validityDate;
-  if (!vd) { validityBanner.classList.add("hidden"); return; }
-  const m = vd.match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/);
-  if (!m) { validityBanner.classList.add("hidden"); return; }
+// ─── VALIDITY ─────────────────────────────────────────────────────────────────
+function renderValidity(dateStr) {
+  const el = document.getElementById('validityBanner');
+  if (!dateStr) { el.style.display='none'; return; }
+  const m = dateStr.match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/);
+  if (!m) { el.style.display='none'; return; }
   const d = new Date(+m[3],+m[2]-1,+m[1]), now = new Date(); now.setHours(0,0,0,0);
   const diff = Math.ceil((d-now)/86400000);
-  let state2, icon, title, label;
-  if (diff<0){ state2="expired"; icon="❌"; title="Recept VYPRŠEL"; label=`Platnost vypršela před ${Math.abs(diff)} dny`; }
-  else if(diff<=3){ state2="warn"; icon="⚠️"; title="Brzy vyprší"; label=`Platný ještě ${diff} ${diff===1?"den":diff<5?"dny":"dní"}`; }
-  else { state2="ok"; icon="✅"; title="Recept platný"; label=`Platný do ${vd} (ještě ${diff} dní)`; }
-  validityBanner.className = "validity " + state2;
-  validityBanner.innerHTML = `<div class="val-icon">${icon}</div><div><div class="val-title">${title}</div><div class="val-sub">${label}</div></div>`;
-  validityBanner.classList.remove("hidden");
+  let cls, icon, title, sub;
+  if (diff<0){ cls='expired'; icon='❌'; title='Recept VYPRŠEL'; sub=`Platnost vypršela před ${Math.abs(diff)} dny`; }
+  else if(diff<=3){ cls='warn'; icon='⚠️'; title='Brzy vyprší'; sub=`Platný ještě ${diff} ${diff===1?'den':diff<5?'dny':'dní'}`; }
+  else { cls='ok'; icon='✅'; title='Recept platný'; sub=`Platný do ${dateStr} (ještě ${diff} dní)`; }
+  el.className='qr-validity '+cls;
+  el.innerHTML=`<div class="val-icon">${icon}</div><div><div class="val-title">${title}</div><div class="val-sub">${sub}</div></div>`;
+  el.style.display='flex';
 }
 
-function renderShareButtons(code) {
-  shareRow.innerHTML = "";
-  if (navigator.share) {
-    const btnShare = document.createElement("button");
-    btnShare.className = "btn btn-primary"; btnShare.textContent = "⬆ Sdílet QR";
-    btnShare.onclick = async () => {
-      qrCanvas.toBlob(async blob => {
-        try { await navigator.share({ title:"eRecept QR kód", files:[new File([blob],"erecept-qr.png",{type:"image/png"})] }); } catch {}
+// ─── MAIN FLOW ─────────────────────────────────────────────────────────────────
+document.getElementById('fileInput').onchange = async e => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  show('screenLoading');
+  document.getElementById('loadingTitle').textContent = 'Rozpoznávám kód…';
+  document.getElementById('loadingSub').textContent = 'AI čte SMS zprávu';
+
+  const reader = new FileReader();
+  reader.onload = async ev => {
+    const base64 = ev.target.result.split(',')[1];
+    const mime = file.type;
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 300,
+          messages: [{
+            role: 'user',
+            content: [
+              { type:'image', source:{ type:'base64', media_type:mime, data:base64 } },
+              { type:'text', text:`Na obrázku je SMS zpráva s eReceptem.
+
+Najdi 12místný alfanumerický kód eReceptu (písmena A-Z a číslice 0-9).
+Může být zapsán s mezerami (např. "PO4V M7IW G9LB") nebo bez (PO4VM7IWG9LB).
+Může být také v URL jako parametr "i=" (např. i=PO4VM7IWG9LB).
+Také najdi datum platnosti (dd.mm.yyyy za "platný do" nebo URL parametr "s=").
+
+Odpověz POUZE jako JSON bez markdown:
+{"code":"PO4VM7IWG9LB","validity":"25.12.2025"}
+
+Pokud kód nenajdeš, vrať: {"code":null,"validity":null}` }
+            ]
+          }]
+        })
       });
-    };
-    shareRow.appendChild(btnShare);
-  }
-  const btnDL = document.createElement("button");
-  btnDL.className = "btn btn-primary"; btnDL.textContent = "⬇ Stáhnout PNG";
-  btnDL.onclick = () => { const a=document.createElement("a"); a.href=qrCanvas.toDataURL("image/png"); a.download="erecept-qr.png"; a.click(); };
-  shareRow.appendChild(btnDL);
-}
 
-// ─── BACK / RESET ─────────────────────────────────────────────────────────────
-$id("btnBackToMatches").onclick = () => { cardQR.classList.add("hidden"); updateSteps(2); };
-$id("btnReset").onclick = reset;
+      const data = await res.json();
+      if (data.error) throw new Error(data.error.message);
+      const raw = data.content?.find(b=>b.type==='text')?.text?.trim()||'{}';
+      const parsed = JSON.parse(raw.replace(/```json|```/g,'').trim());
+      const code = parsed.code ? parsed.code.replace(/[^A-Z0-9]/gi,'').toUpperCase() : null;
 
-function reset() {
-  state = { image: null, matches: [], selMatch: null, validityDate: "", smsText: "" };
-  fileInput.value = ""; previewImg.src = "";
-  dropzone.classList.remove("hidden"); imgPreview.classList.add("hidden");
-  cardMatches.classList.add("hidden"); cardQR.classList.add("hidden");
-  btnAnalyze.disabled = true; btnGenQR.disabled = true;
-  hideStatus(); updateSteps(0);
+      if (!code || code.length < 8) {
+        document.getElementById('errMsg').textContent = 'V SMS nebyl nalezen platný kód eReceptu. Zkuste vyfotit znovu — celá SMS musí být čitelná.';
+        show('screenError');
+        return;
+      }
+
+      // Generuj QR
+      document.getElementById('loadingTitle').textContent = 'Generuji QR kód…';
+      document.getElementById('loadingSub').textContent = code.match(/.{1,4}/g).join(' ');
+
+      QRGen.draw(code, document.getElementById('qrCanvas'));
+      document.getElementById('codeDisplay').textContent = code.match(/.{1,4}/g).join(' ');
+      renderValidity(parsed.validity);
+
+      // Share button
+      const btnShare = document.getElementById('btnShare');
+      btnShare.onclick = () => {
+        document.getElementById('qrCanvas').toBlob(async blob => {
+          try {
+            await navigator.share({ title:'eRecept QR', files:[new File([blob],'erecept-qr.png',{type:'image/png'})] });
+          } catch {
+            // fallback: download
+            const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='erecept-qr.png'; a.click();
+          }
+        });
+      };
+      // hide share if not supported
+      if (!navigator.share && !navigator.canShare) {
+        btnShare.textContent = '⬇ Stáhnout';
+      }
+
+      show('screenQR');
+
+    } catch(err) {
+      document.getElementById('errMsg').textContent = 'Chyba: ' + err.message;
+      show('screenError');
+    }
+  };
+  reader.readAsDataURL(file);
+};
+
+// ─── BUTTONS ──────────────────────────────────────────────────────────────────
+function goBack() {
+  document.getElementById('fileInput').value = '';
+  show('screenCamera');
 }
+document.getElementById('btnAgain').onclick = goBack;
+document.getElementById('btnRetry').onclick = goBack;
 
 // ─── SERVICE WORKER ───────────────────────────────────────────────────────────
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./sw.js").catch(() => {});
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').catch(()=>{});
 }
 </script>
 </body>
