@@ -1,8 +1,7 @@
-const CACHE = 'erecept-qr-v2';
-const ASSETS = ['./index.html', './manifest.json'];
+const CACHE = 'erecept-qr-v3';
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(['/'])));
   self.skipWaiting();
 });
 
@@ -14,11 +13,9 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  // Nekahej do externích požadavků (API, fonty) — nech je projít přímo
-  if (!e.request.url.startsWith(self.location.origin)) {
-    return;
-  }
-  // Lokální soubory: cache-first
+  // Nekahej do API volání
+  if (e.request.url.includes('/api/')) return;
+  if (!e.request.url.startsWith(self.location.origin)) return;
   e.respondWith(
     caches.match(e.request).then(cached => cached || fetch(e.request))
   );

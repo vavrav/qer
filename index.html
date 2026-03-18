@@ -9,48 +9,29 @@
 <meta name="apple-mobile-web-app-title" content="eRecept QR">
 <meta name="theme-color" content="#06080F">
 <title>eRecept QR</title>
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="/manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;background:#06080F;color:#E4E8FF;font-family:'Lexend',sans-serif;-webkit-tap-highlight-color:transparent;overscroll-behavior:none;}
-
-/* ── Layout ── */
 #app{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:env(safe-area-inset-top,0px) 20px env(safe-area-inset-bottom,0px);}
 .orb{position:fixed;border-radius:50%;pointer-events:none;filter:blur(100px);}
 .orb1{width:500px;height:500px;top:-180px;left:-150px;background:radial-gradient(circle,rgba(74,144,255,0.08) 0%,transparent 70%);}
 .orb2{width:400px;height:400px;bottom:-100px;right:-120px;background:radial-gradient(circle,rgba(0,212,255,0.06) 0%,transparent 70%);}
-
-/* ── SCREEN BASE ── */
 .screen{display:none;flex-direction:column;align-items:center;gap:24px;width:100%;max-width:400px;text-align:center;animation:fadeIn .3s ease both;}
 .screen.active{display:flex;}
-
-/* ── SCREEN: CAMERA ── */
 .cam-icon{width:100px;height:100px;border-radius:28px;background:linear-gradient(135deg,rgba(74,144,255,0.15),rgba(0,212,255,0.1));border:1px solid rgba(74,144,255,0.2);display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:8px;}
 .cam-title{font-size:1.6rem;font-weight:700;letter-spacing:-.02em;line-height:1.2;}
 .cam-title .grad{background:linear-gradient(90deg,#4A90FF,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .cam-sub{font-size:.82rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;line-height:1.6;}
-
-.cam-btn{
-  width:100%;padding:18px;border-radius:16px;border:none;
-  background:linear-gradient(135deg,#4A90FF,#00D4FF);
-  color:#fff;font-family:'Lexend',sans-serif;font-size:1rem;font-weight:700;
-  cursor:pointer;position:relative;overflow:hidden;
-  box-shadow:0 8px 32px rgba(74,144,255,0.3);
-  transition:transform .15s,box-shadow .15s;
-}
+.cam-btn{width:100%;padding:18px;border-radius:16px;border:none;background:linear-gradient(135deg,#4A90FF,#00D4FF);color:#fff;font-family:'Lexend',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(74,144,255,0.3);transition:transform .15s,box-shadow .15s;}
 .cam-btn:active{transform:scale(0.97);box-shadow:0 4px 16px rgba(74,144,255,0.2);}
 .cam-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-
 .cam-hint{font-size:.68rem;color:#2A2D40;font-family:'JetBrains Mono',monospace;}
-
-/* ── SCREEN: LOADING ── */
 .loading-ring{width:80px;height:80px;border-radius:50%;border:3px solid rgba(74,144,255,0.15);border-top-color:#4A90FF;animation:spin 1s linear infinite;}
 .loading-title{font-size:1.1rem;font-weight:600;}
 .loading-sub{font-size:.75rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;}
-
-/* ── SCREEN: QR ── */
 .qr-validity{width:100%;border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px;text-align:left;}
 .qr-validity.ok{background:rgba(0,232,122,0.1);border:1px solid rgba(0,232,122,0.2);}
 .qr-validity.warn{background:rgba(255,184,48,0.1);border:1px solid rgba(255,184,48,0.25);}
@@ -61,26 +42,20 @@ html,body{height:100%;background:#06080F;color:#E4E8FF;font-family:'Lexend',sans
 .qr-validity.warn .val-title{color:#FFB830;}
 .qr-validity.expired .val-title{color:#FF4D6A;}
 .val-sub{font-size:.7rem;color:#7A80A8;font-family:'JetBrains Mono',monospace;margin-top:3px;}
-
 .qr-frame{background:#fff;padding:20px;border-radius:20px;box-shadow:0 0 0 1px rgba(255,255,255,0.05),0 24px 64px rgba(74,144,255,0.15);}
 .qr-frame canvas{display:block;image-rendering:pixelated;}
-
 .code-pill{background:#0C0E1A;border:1px solid #1A1D2E;border-radius:12px;padding:12px 20px;font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;letter-spacing:.18em;color:#E4E8FF;}
 .code-lbl{font-size:.65rem;color:#2A2D40;font-family:'JetBrains Mono',monospace;margin-top:6px;}
-
 .btn-row{display:flex;gap:10px;width:100%;}
 .btn-row button{flex:1;padding:13px;border-radius:12px;border:none;font-family:'Lexend',sans-serif;font-size:.83rem;font-weight:600;cursor:pointer;transition:all .15s;}
 .btn-share{background:linear-gradient(135deg,#4A90FF,#00D4FF);color:#fff;box-shadow:0 4px 16px rgba(74,144,255,0.2);}
 .btn-share:active{transform:scale(0.97);}
 .btn-again{background:transparent;color:#4A4F70;border:1px solid #1A1D2E;}
 .btn-again:active{border-color:#4A90FF;color:#4A90FF;}
-
-/* ── SCREEN: ERROR ── */
 .err-icon{font-size:3rem;}
 .err-title{font-size:1.1rem;font-weight:700;color:#FF4D6A;}
 .err-msg{font-size:.78rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;line-height:1.6;max-width:300px;}
-.btn-retry{width:100%;padding:14px;border-radius:12px;border:none;background:rgba(255,77,106,0.1);border:1px solid rgba(255,77,106,0.2);color:#FF4D6A;font-family:'Lexend',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;}
-
+.btn-retry{width:100%;padding:14px;border-radius:12px;border:1px solid rgba(255,77,106,0.2);background:rgba(255,77,106,0.1);color:#FF4D6A;font-family:'Lexend',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes popIn{0%{transform:scale(.8);opacity:0}100%{transform:scale(1);opacity:1}}
@@ -135,7 +110,7 @@ html,body{height:100%;background:#06080F;color:#E4E8FF;font-family:'Lexend',sans
   <!-- SCREEN 4: CHYBA -->
   <div class="screen" id="screenError">
     <div class="err-icon">🔍</div>
-    <div class="err-title">Kód nenalezen</div>
+    <div class="err-title" id="errTitle">Kód nenalezen</div>
     <div class="err-msg" id="errMsg">V SMS nebyl nalezen platný kód eReceptu.</div>
     <button class="btn-retry" id="btnRetry">↺ Zkusit znovu</button>
   </div>
@@ -214,10 +189,10 @@ function renderValidity(dateStr) {
   if (!m) { el.style.display='none'; return; }
   const d = new Date(+m[3],+m[2]-1,+m[1]), now = new Date(); now.setHours(0,0,0,0);
   const diff = Math.ceil((d-now)/86400000);
-  let cls, icon, title, sub;
-  if (diff<0){ cls='expired'; icon='❌'; title='Recept VYPRŠEL'; sub=`Platnost vypršela před ${Math.abs(diff)} dny`; }
-  else if(diff<=3){ cls='warn'; icon='⚠️'; title='Brzy vyprší'; sub=`Platný ještě ${diff} ${diff===1?'den':diff<5?'dny':'dní'}`; }
-  else { cls='ok'; icon='✅'; title='Recept platný'; sub=`Platný do ${dateStr} (ještě ${diff} dní)`; }
+  let cls,icon,title,sub;
+  if(diff<0){cls='expired';icon='❌';title='Recept VYPRŠEL';sub=`Platnost vypršela před ${Math.abs(diff)} dny`;}
+  else if(diff<=3){cls='warn';icon='⚠️';title='Brzy vyprší';sub=`Platný ještě ${diff} ${diff===1?'den':diff<5?'dny':'dní'}`;}
+  else{cls='ok';icon='✅';title='Recept platný';sub=`Platný do ${dateStr} (ještě ${diff} dní)`;}
   el.className='qr-validity '+cls;
   el.innerHTML=`<div class="val-icon">${icon}</div><div><div class="val-title">${title}</div><div class="val-sub">${sub}</div></div>`;
   el.style.display='flex';
@@ -238,45 +213,28 @@ document.getElementById('fileInput').onchange = async e => {
     const mime = file.type;
 
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      // Volá naši serverless funkci, ne Anthropic přímo
+      const res = await fetch('/api/analyze', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 300,
-          messages: [{
-            role: 'user',
-            content: [
-              { type:'image', source:{ type:'base64', media_type:mime, data:base64 } },
-              { type:'text', text:`Na obrázku je SMS zpráva s eReceptem.
-
-Najdi 12místný alfanumerický kód eReceptu (písmena A-Z a číslice 0-9).
-Může být zapsán s mezerami (např. "PO4V M7IW G9LB") nebo bez (PO4VM7IWG9LB).
-Může být také v URL jako parametr "i=" (např. i=PO4VM7IWG9LB).
-Také najdi datum platnosti (dd.mm.yyyy za "platný do" nebo URL parametr "s=").
-
-Odpověz POUZE jako JSON bez markdown:
-{"code":"PO4VM7IWG9LB","validity":"25.12.2025"}
-
-Pokud kód nenajdeš, vrať: {"code":null,"validity":null}` }
-            ]
-          }]
-        })
+        body: JSON.stringify({ base64, mime })
       });
 
-      const data = await res.json();
-      if (data.error) throw new Error(data.error.message);
-      const raw = data.content?.find(b=>b.type==='text')?.text?.trim()||'{}';
-      const parsed = JSON.parse(raw.replace(/```json|```/g,'').trim());
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({error: 'Neznámá chyba serveru'}));
+        throw new Error(err.error || 'Chyba serveru');
+      }
+
+      const parsed = await res.json();
       const code = parsed.code ? parsed.code.replace(/[^A-Z0-9]/gi,'').toUpperCase() : null;
 
       if (!code || code.length < 8) {
+        document.getElementById('errTitle').textContent = 'Kód nenalezen';
         document.getElementById('errMsg').textContent = 'V SMS nebyl nalezen platný kód eReceptu. Zkuste vyfotit znovu — celá SMS musí být čitelná.';
         show('screenError');
         return;
       }
 
-      // Generuj QR
       document.getElementById('loadingTitle').textContent = 'Generuji QR kód…';
       document.getElementById('loadingSub').textContent = code.match(/.{1,4}/g).join(' ');
 
@@ -284,34 +242,29 @@ Pokud kód nenajdeš, vrať: {"code":null,"validity":null}` }
       document.getElementById('codeDisplay').textContent = code.match(/.{1,4}/g).join(' ');
       renderValidity(parsed.validity);
 
-      // Share button
       const btnShare = document.getElementById('btnShare');
       btnShare.onclick = () => {
         document.getElementById('qrCanvas').toBlob(async blob => {
           try {
             await navigator.share({ title:'eRecept QR', files:[new File([blob],'erecept-qr.png',{type:'image/png'})] });
           } catch {
-            // fallback: download
             const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='erecept-qr.png'; a.click();
           }
         });
       };
-      // hide share if not supported
-      if (!navigator.share && !navigator.canShare) {
-        btnShare.textContent = '⬇ Stáhnout';
-      }
+      if (!navigator.share) btnShare.textContent = '⬇ Stáhnout';
 
       show('screenQR');
 
     } catch(err) {
-      document.getElementById('errMsg').textContent = 'Chyba: ' + err.message;
+      document.getElementById('errTitle').textContent = 'Chyba';
+      document.getElementById('errMsg').textContent = err.message;
       show('screenError');
     }
   };
   reader.readAsDataURL(file);
 };
 
-// ─── BUTTONS ──────────────────────────────────────────────────────────────────
 function goBack() {
   document.getElementById('fileInput').value = '';
   show('screenCamera');
@@ -319,9 +272,8 @@ function goBack() {
 document.getElementById('btnAgain').onclick = goBack;
 document.getElementById('btnRetry').onclick = goBack;
 
-// ─── SERVICE WORKER ───────────────────────────────────────────────────────────
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  navigator.serviceWorker.register('/sw.js').catch(()=>{});
 }
 </script>
 </body>
