@@ -10,89 +10,197 @@
 <meta name="theme-color" content="#06080F">
 <title>eRecept QR</title>
 <link rel="manifest" href="/manifest.json">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html,body{height:100%;background:#06080F;color:#E4E8FF;font-family:'Lexend',sans-serif;-webkit-tap-highlight-color:transparent;overscroll-behavior:none;}
-#app{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:env(safe-area-inset-top,0px) 20px env(safe-area-inset-bottom,0px);}
+html,body{height:100%;background:#000;color:#E4E8FF;font-family:'Lexend',sans-serif;-webkit-tap-highlight-color:transparent;overscroll-behavior:none;}
+
+/* ── SCREENS ── */
+.screen{display:none;min-height:100dvh;flex-direction:column;align-items:center;justify-content:center;}
+.screen.active{display:flex;}
+
+/* ── SETUP ── */
+#screenSetup{background:#06080F;padding:28px;gap:20px;text-align:center;}
 .orb{position:fixed;border-radius:50%;pointer-events:none;filter:blur(100px);}
 .orb1{width:500px;height:500px;top:-180px;left:-150px;background:radial-gradient(circle,rgba(74,144,255,0.08) 0%,transparent 70%);}
 .orb2{width:400px;height:400px;bottom:-100px;right:-120px;background:radial-gradient(circle,rgba(0,212,255,0.06) 0%,transparent 70%);}
-.screen{display:none;flex-direction:column;align-items:center;gap:24px;width:100%;max-width:400px;text-align:center;animation:fadeIn .3s ease both;}
-.screen.active{display:flex;}
-.cam-icon{width:100px;height:100px;border-radius:28px;background:linear-gradient(135deg,rgba(74,144,255,0.15),rgba(0,212,255,0.1));border:1px solid rgba(74,144,255,0.2);display:flex;align-items:center;justify-content:center;font-size:3rem;}
-.cam-title{font-size:1.6rem;font-weight:700;letter-spacing:-.02em;line-height:1.2;}
+.setup-wrap{display:flex;flex-direction:column;gap:20px;width:100%;max-width:380px;}
+.setup-icon{font-size:2.8rem;}
+.setup-title{font-size:1.4rem;font-weight:700;}
 .grad{background:linear-gradient(90deg,#4A90FF,#00D4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.cam-sub{font-size:.82rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;line-height:1.7;}
-.cam-btn{width:100%;padding:18px;border-radius:16px;border:none;background:linear-gradient(135deg,#4A90FF,#00D4FF);color:#fff;font-family:'Lexend',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(74,144,255,0.3);transition:transform .15s;}
-.cam-btn:active{transform:scale(0.97);}
-.cam-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-.cam-hint{font-size:.68rem;color:#2A2D40;font-family:'JetBrains Mono',monospace;}
-.loading-ring{width:72px;height:72px;border-radius:50%;border:3px solid rgba(74,144,255,0.12);border-top-color:#4A90FF;animation:spin 1s linear infinite;}
-.loading-title{font-size:1.05rem;font-weight:600;}
-.loading-sub{font-size:.73rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;min-height:1.2em;}
-.progress-bar{width:260px;height:4px;background:#1A1D2E;border-radius:4px;overflow:hidden;}
-.progress-fill{height:100%;background:linear-gradient(90deg,#4A90FF,#00D4FF);border-radius:4px;transition:width .4s ease;width:0%;}
-.qr-validity{width:100%;border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px;text-align:left;}
+.setup-sub{font-size:.78rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;line-height:1.8;}
+.setup-link{color:#4A90FF;}
+.key-input{width:100%;padding:14px 16px;border-radius:12px;border:1px solid #1A1D2E;background:#0C0E1A;color:#E4E8FF;font-family:'JetBrains Mono',monospace;font-size:.85rem;outline:none;transition:border-color .2s;}
+.key-input:focus{border-color:#4A90FF;}
+.key-input::placeholder{color:#2A2D40;}
+.btn-primary{width:100%;padding:15px;border-radius:12px;border:none;background:linear-gradient(135deg,#4A90FF,#00D4FF);color:#fff;font-family:'Lexend',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;}
+.key-note{font-size:.63rem;color:#2A2D40;font-family:'JetBrains Mono',monospace;line-height:1.6;}
+
+/* ── CAMERA SCREEN ── */
+#screenCamera{position:relative;background:#000;overflow:hidden;}
+
+#video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+}
+
+/* Scan overlay */
+.scan-overlay{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  pointer-events:none;
+}
+
+/* Viewfinder box */
+.viewfinder{
+  width:80vw;max-width:340px;
+  aspect-ratio:3/1;
+  position:relative;
+}
+.viewfinder::before,.viewfinder::after,
+.vf-bl,.vf-br{
+  content:'';position:absolute;
+  width:24px;height:24px;
+  border-color:#4A90FF;border-style:solid;
+}
+.viewfinder::before{top:0;left:0;border-width:3px 0 0 3px;border-radius:4px 0 0 0;}
+.viewfinder::after{top:0;right:0;border-width:3px 3px 0 0;border-radius:0 4px 0 0;}
+.vf-bl{bottom:0;left:0;border-width:0 0 3px 3px;border-radius:0 0 0 4px;}
+.vf-br{bottom:0;right:0;border-width:0 3px 3px 0;border-radius:0 0 4px 0;}
+
+/* Scan line animation */
+.scan-line{
+  position:absolute;left:4px;right:4px;height:2px;
+  background:linear-gradient(90deg,transparent,#4A90FF,#00D4FF,#4A90FF,transparent);
+  animation:scanMove 2s ease-in-out infinite;
+  border-radius:1px;
+  box-shadow:0 0 8px rgba(74,144,255,0.8);
+}
+@keyframes scanMove{
+  0%{top:4px;opacity:0;}
+  10%{opacity:1;}
+  90%{opacity:1;}
+  100%{top:calc(100% - 6px);opacity:0;}
+}
+
+.scan-hint{
+  margin-top:20px;
+  font-size:.72rem;color:rgba(255,255,255,0.5);
+  font-family:'JetBrains Mono',monospace;
+  text-align:center;
+  text-shadow:0 1px 4px rgba(0,0,0,0.8);
+}
+
+/* Status badge */
+.scan-status{
+  position:absolute;top:env(safe-area-inset-top,20px);
+  left:50%;transform:translateX(-50%);
+  background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;padding:6px 16px;
+  font-size:.7rem;color:rgba(255,255,255,0.7);
+  font-family:'JetBrains Mono',monospace;
+  white-space:nowrap;
+  transition:all .3s;
+}
+.scan-status.scanning{border-color:rgba(74,144,255,0.4);color:#4A90FF;}
+.scan-status.found{border-color:rgba(0,232,122,0.5);color:#00E87A;background:rgba(0,0,0,0.8);}
+
+/* Settings button */
+.btn-settings-cam{
+  position:absolute;bottom:max(env(safe-area-inset-bottom,20px),20px);right:20px;
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.1);
+  color:rgba(255,255,255,0.5);font-size:1.1rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+
+/* ── QR SCREEN ── */
+#screenQR{background:#06080F;padding:28px;gap:20px;}
+.qr-wrap{display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;max-width:360px;}
+.qr-validity{width:100%;border-radius:14px;padding:13px 16px;display:flex;align-items:center;gap:13px;text-align:left;}
 .qr-validity.ok{background:rgba(0,232,122,0.1);border:1px solid rgba(0,232,122,0.2);}
 .qr-validity.warn{background:rgba(255,184,48,0.1);border:1px solid rgba(255,184,48,0.25);}
 .qr-validity.expired{background:rgba(255,77,106,0.1);border:1px solid rgba(255,77,106,0.25);}
-.val-icon{font-size:1.5rem;flex-shrink:0;}
-.val-title{font-weight:700;font-size:.88rem;}
+.val-icon{font-size:1.4rem;flex-shrink:0;}
+.val-title{font-weight:700;font-size:.85rem;}
 .qr-validity.ok .val-title{color:#00E87A;}.qr-validity.warn .val-title{color:#FFB830;}.qr-validity.expired .val-title{color:#FF4D6A;}
-.val-sub{font-size:.68rem;color:#7A80A8;font-family:'JetBrains Mono',monospace;margin-top:3px;}
-.qr-frame{background:#fff;padding:20px;border-radius:20px;box-shadow:0 24px 64px rgba(74,144,255,0.15);}
+.val-sub{font-size:.67rem;color:#7A80A8;font-family:'JetBrains Mono',monospace;margin-top:2px;}
+.qr-frame{background:#fff;padding:18px;border-radius:18px;box-shadow:0 20px 60px rgba(74,144,255,0.2);}
 .qr-frame canvas{display:block;image-rendering:pixelated;}
-.code-pill{background:#0C0E1A;border:1px solid #1A1D2E;border-radius:12px;padding:12px 20px;font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;letter-spacing:.18em;color:#E4E8FF;}
-.code-lbl{font-size:.63rem;color:#2A2D40;font-family:'JetBrains Mono',monospace;margin-top:6px;}
+.code-pill{background:#0C0E1A;border:1px solid #1A1D2E;border-radius:11px;padding:11px 18px;font-family:'JetBrains Mono',monospace;font-size:1.05rem;font-weight:700;letter-spacing:.16em;color:#E4E8FF;}
+.code-lbl{font-size:.62rem;color:#2A2D40;font-family:'JetBrains Mono',monospace;margin-top:5px;text-align:center;}
 .btn-row{display:flex;gap:10px;width:100%;}
-.btn-row button{flex:1;padding:13px;border-radius:12px;border:none;font-family:'Lexend',sans-serif;font-size:.83rem;font-weight:600;cursor:pointer;transition:all .15s;}
+.btn-row button{flex:1;padding:13px;border-radius:11px;border:none;font-family:'Lexend',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;}
 .btn-share{background:linear-gradient(135deg,#4A90FF,#00D4FF);color:#fff;}
-.btn-share:active{transform:scale(0.97);}
 .btn-again{background:transparent;color:#4A4F70;border:1px solid #1A1D2E;}
-.btn-again:active{border-color:#4A90FF;color:#4A90FF;}
-.err-icon{font-size:3rem;}
-.err-title{font-size:1.1rem;font-weight:700;color:#FF4D6A;}
-.err-msg{font-size:.78rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;line-height:1.6;max-width:300px;}
-.btn-retry{width:100%;padding:14px;border-radius:12px;border:1px solid rgba(255,77,106,0.2);background:rgba(255,77,106,0.1);color:#FF4D6A;font-family:'Lexend',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes popIn{0%{transform:scale(.8);opacity:0}100%{transform:scale(1);opacity:1}}
-.pop{animation:popIn .4s cubic-bezier(.34,1.56,.64,1) both;}
+
+/* ── ERROR ── */
+#screenError{background:#06080F;padding:28px;gap:20px;text-align:center;}
+.err-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;max-width:340px;}
+.err-icon{font-size:2.8rem;}
+.err-title{font-size:1rem;font-weight:700;color:#FF4D6A;}
+.err-msg{font-size:.76rem;color:#4A4F70;font-family:'JetBrains Mono',monospace;line-height:1.6;}
+.btn-retry{width:100%;padding:13px;border-radius:11px;border:1px solid rgba(255,77,106,0.2);background:rgba(255,77,106,0.1);color:#FF4D6A;font-family:'Lexend',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;}
+
+@keyframes popIn{0%{transform:scale(.82);opacity:0}100%{transform:scale(1);opacity:1}}
+.pop{animation:popIn .38s cubic-bezier(.34,1.56,.64,1) both;}
 </style>
 </head>
 <body>
-<div id="app">
+
+<!-- SETUP -->
+<div class="screen" id="screenSetup">
   <div class="orb orb1"></div><div class="orb orb2"></div>
-
-  <div class="screen active" id="screenCamera">
-    <div class="cam-icon">📱</div>
+  <div class="setup-wrap">
+    <div class="setup-icon">🔑</div>
     <div>
-      <div class="cam-title">SMS <span class="grad">→ QR</span></div>
-      <div style="height:10px"></div>
-      <div class="cam-sub">Vyfoťte displej s SMS eReceptu<br>Kód se rozpozná automaticky</div>
+      <div class="setup-title">Google Vision <span class="grad">API klíč</span></div>
+      <div style="height:8px"></div>
+      <div class="setup-sub">
+        Zadejte váš Google Vision API klíč.<br>
+        Uloží se pouze do tohoto telefonu.<br>
+        <a class="setup-link" href="https://console.cloud.google.com/apis/credentials" target="_blank">console.cloud.google.com → Credentials</a>
+      </div>
     </div>
-    <div class="cam-btn">
-      <input type="file" id="fileInput" accept="image/*" capture="environment">
-      📷&nbsp; Vyfotit SMS
+    <input class="key-input" id="apiKeyInput" type="password"
+      placeholder="AIzaSy..." autocomplete="off" autocorrect="off" spellcheck="false">
+    <button class="btn-primary" id="btnSaveKey" disabled>Uložit a spustit kameru</button>
+    <div class="key-note">
+      Klíč se nikam neodesílá — zůstává jen v tomto prohlížeči.<br>
+      Google Vision API: 1000 skenování měsíčně zdarma.
     </div>
-    <div class="cam-hint">nebo vyberte snímek z galerie</div>
+  </div>
+</div>
+
+<!-- KAMERA (live) -->
+<div class="screen" id="screenCamera">
+  <video id="video" autoplay playsinline muted></video>
+  <canvas id="captureCanvas" style="display:none"></canvas>
+
+  <div class="scan-overlay">
+    <div class="viewfinder">
+      <div class="vf-bl"></div><div class="vf-br"></div>
+      <div class="scan-line"></div>
+    </div>
+    <div class="scan-hint">Namiřte na SMS s eReceptem</div>
   </div>
 
-  <div class="screen" id="screenLoading">
-    <div class="loading-ring"></div>
-    <div>
-      <div class="loading-title" id="loadingTitle">Zpracovávám snímek…</div>
-      <div class="loading-sub" id="loadingSub">Načítám OCR engine</div>
-    </div>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-  </div>
+  <div class="scan-status" id="scanStatus">Připravuji kameru…</div>
+  <button class="btn-settings-cam" id="btnSettingsCam">⚙</button>
+</div>
 
-  <div class="screen" id="screenQR">
+<!-- QR KÓD -->
+<div class="screen" id="screenQR">
+  <div class="orb orb1"></div><div class="orb orb2"></div>
+  <div class="qr-wrap">
     <div id="validityBanner" style="display:none;width:100%"></div>
     <div class="qr-frame pop"><canvas id="qrCanvas" width="260" height="260"></canvas></div>
-    <div>
+    <div style="text-align:center">
       <div class="code-pill" id="codeDisplay"></div>
       <div class="code-lbl">Identifikátor eReceptu</div>
     </div>
@@ -101,11 +209,15 @@ html,body{height:100%;background:#06080F;color:#E4E8FF;font-family:'Lexend',sans
       <button class="btn-again" id="btnAgain">↺ Nová SMS</button>
     </div>
   </div>
+</div>
 
-  <div class="screen" id="screenError">
-    <div class="err-icon">🔍</div>
-    <div class="err-title" id="errTitle">Kód nenalezen</div>
-    <div class="err-msg" id="errMsg">Kód eReceptu nebyl rozpoznán.</div>
+<!-- CHYBA -->
+<div class="screen" id="screenError">
+  <div class="orb orb1"></div><div class="orb orb2"></div>
+  <div class="err-wrap">
+    <div class="err-icon">⚠️</div>
+    <div class="err-title" id="errTitle">Chyba</div>
+    <div class="err-msg" id="errMsg">Nastala chyba.</div>
     <button class="btn-retry" id="btnRetry">↺ Zkusit znovu</button>
   </div>
 </div>
@@ -166,31 +278,27 @@ const QRGen=(()=>{
 })();
 
 // ─── REGEX ────────────────────────────────────────────────────────────────────
-function extractCode(text) {
-  const t = text.replace(/\n/g,' ');
-  // 1. URL parametr i=
-  let m = t.match(/[?&]i=([A-Z0-9]{12})/i);
-  if (m) return m[1].toUpperCase();
-  // 2. Kompaktní 12 znaků
-  m = t.match(/\b([A-Z0-9]{12})\b/i);
-  if (m) return m[1].toUpperCase();
-  // 3. Tři skupiny po čtyřech (s mezerou nebo pomlčkou)
-  m = t.match(/\b([A-Z0-9]{4})[\s\-]([A-Z0-9]{4})[\s\-]([A-Z0-9]{4})\b/i);
-  if (m) return (m[1]+m[2]+m[3]).toUpperCase();
+function extractCode(text){
+  const t=text.replace(/\n/g,' ');
+  let m=t.match(/[?&]i=([A-Z0-9]{12})/i); if(m) return m[1].toUpperCase();
+  m=t.match(/\b([A-Z0-9]{12})\b/i); if(m) return m[1].toUpperCase();
+  m=t.match(/\b([A-Z0-9]{4})[\s\-]([A-Z0-9]{4})[\s\-]([A-Z0-9]{4})\b/i);
+  if(m) return (m[1]+m[2]+m[3]).toUpperCase();
   return null;
 }
-
-function extractValidity(text) {
-  const m = text.match(/platný?\s+do\s+(\d{1,2}\.\d{1,2}\.\d{4})/i)
-           || text.match(/[?&]s=(\d{1,2}\.\d{1,2}\.\d{4})/i);
-  return m ? m[1] : null;
+function extractValidity(text){
+  const m=text.match(/platný?\s+do\s+(\d{1,2}\.\d{1,2}\.\d{4})/i)
+           ||text.match(/[?&]s=(\d{1,2}\.\d{1,2}\.\d{4})/i);
+  return m?m[1]:null;
 }
 
-// ─── UI HELPERS ───────────────────────────────────────────────────────────────
-function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
-function setProgress(p){document.getElementById('progressFill').style.width=p+'%';}
-function setSub(t){document.getElementById('loadingSub').textContent=t;}
-function setTitle(t){document.getElementById('loadingTitle').textContent=t;}
+// ─── UI ───────────────────────────────────────────────────────────────────────
+const show=id=>{document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');};
+
+function setStatus(msg,cls=''){
+  const el=document.getElementById('scanStatus');
+  el.textContent=msg; el.className='scan-status'+(cls?' '+cls:'');
+}
 
 function renderValidity(dateStr){
   const el=document.getElementById('validityBanner');
@@ -208,95 +316,160 @@ function renderValidity(dateStr){
   el.style.display='flex';
 }
 
-// ─── OCR + FLOW ───────────────────────────────────────────────────────────────
-// Tesseract worker — vytvoříme jednou a reusujeme
-let worker = null;
+// ─── API KEY ──────────────────────────────────────────────────────────────────
+const KEY='erecept_gvision_key';
+const getKey=()=>localStorage.getItem(KEY)||'';
+const saveKey=k=>localStorage.setItem(KEY,k);
 
-async function getWorker() {
-  if (worker) return worker;
-  setTitle('Načítám OCR engine…'); setSub('První spuštění trvá déle'); setProgress(5);
-  // Tesseract 5 — explicitní cesty k workerům z unpkg (CORS OK)
-  worker = await Tesseract.createWorker('eng', 1, {
-    workerPath: 'https://unpkg.com/tesseract.js@5.0.5/dist/worker.min.js',
-    langPath:   'https://tessdata.projectnaptha.com/4.0.0',
-    corePath:   'https://unpkg.com/tesseract.js-core@5.0.0/tesseract-core-simd-lstm.wasm.js',
-    logger: m => {
-      if (m.status === 'loading tesseract core') { setProgress(10); setSub('Načítám OCR jádro…'); }
-      if (m.status === 'initializing tesseract') { setProgress(20); setSub('Inicializuji…'); }
-      if (m.status === 'loading language traineddata') { setProgress(35); setSub('Stahuji jazykový model…'); }
-      if (m.status === 'initializing api') { setProgress(50); setSub('Připravuji API…'); }
-    }
-  });
-  // Nastav jen alfanumerické znaky — rychlejší a přesnější
-  await worker.setParameters({
-    tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .:/=?&-\n',
-    tessedit_pageseg_mode: '6', // Assume uniform block of text
-  });
-  return worker;
+const apiKeyInput=document.getElementById('apiKeyInput');
+const btnSaveKey=document.getElementById('btnSaveKey');
+apiKeyInput.addEventListener('input',()=>{ btnSaveKey.disabled=apiKeyInput.value.trim().length<10; });
+btnSaveKey.onclick=()=>{ const k=apiKeyInput.value.trim(); if(!k)return; saveKey(k); startCamera(); };
+document.getElementById('btnSettingsCam').onclick=()=>{ stopCamera(); apiKeyInput.value=getKey(); btnSaveKey.disabled=false; show('screenSetup'); };
+
+// ─── GOOGLE VISION ────────────────────────────────────────────────────────────
+async function ocrBase64(base64){
+  const res=await fetch(
+    `https://vision.googleapis.com/v1/images:annotate?key=${getKey()}`,
+    {method:'POST',headers:{'Content-Type':'application/json'},
+     body:JSON.stringify({requests:[{
+       image:{content:base64},
+       features:[{type:'TEXT_DETECTION',maxResults:1}],
+       imageContext:{languageHints:['en']}
+     }]})}
+  );
+  const data=await res.json();
+  if(data.error) throw new Error(data.error.message);
+  if(data.responses[0]?.error) throw new Error(data.responses[0].error.message);
+  return data.responses[0]?.fullTextAnnotation?.text||'';
 }
 
-document.getElementById('fileInput').onchange = async e => {
-  const file = e.target.files[0];
-  if (!file) return;
-  show('screenLoading');
-  setProgress(0); setTitle('Zpracovávám snímek…'); setSub('');
+// ─── KAMERA ───────────────────────────────────────────────────────────────────
+const video=document.getElementById('video');
+const captureCanvas=document.getElementById('captureCanvas');
+let stream=null;
+let scanning=false;
+let scanTimer=null;
+let lastCode=null;
+
+async function startCamera(){
+  show('screenCamera');
+  setStatus('Spouštím kameru…');
+  try {
+    stream=await navigator.mediaDevices.getUserMedia({
+      video:{facingMode:'environment',width:{ideal:1280},height:{ideal:720}}
+    });
+    video.srcObject=stream;
+    await video.play();
+    setStatus('Namiřte na SMS…');
+    startScanning();
+  } catch(e){
+    show('screenError');
+    document.getElementById('errTitle').textContent='Kamera nedostupná';
+    document.getElementById('errMsg').textContent=e.message;
+  }
+}
+
+function stopCamera(){
+  stopScanning();
+  if(stream){ stream.getTracks().forEach(t=>t.stop()); stream=null; }
+}
+
+function startScanning(){
+  scanning=true;
+  lastCode=null;
+  scheduleScan();
+}
+
+function stopScanning(){
+  scanning=false;
+  clearTimeout(scanTimer);
+}
+
+function scheduleScan(){
+  if(!scanning) return;
+  scanTimer=setTimeout(doScan, 1500); // skenuj každých 1.5s
+}
+
+async function doScan(){
+  if(!scanning) return;
+  if(!video.videoWidth) { scheduleScan(); return; }
 
   try {
-    const w = await getWorker();
-    setProgress(55); setTitle('Rozpoznávám text…'); setSub('OCR běží…');
+    // Vyfoť aktuální frame
+    const w=video.videoWidth, h=video.videoHeight;
+    captureCanvas.width=w; captureCanvas.height=h;
+    const ctx=captureCanvas.getContext('2d');
+    ctx.drawImage(video,0,0,w,h);
 
-    const imgUrl = URL.createObjectURL(file);
-    const { data } = await w.recognize(imgUrl, {}, {
-      blocks: false, hocr: false, tsv: false, text: true
-    });
-    URL.revokeObjectURL(imgUrl);
+    // Zmenši na max 800px (šetří API kvótu a zrychluje)
+    const maxDim=800;
+    const scale=Math.min(1,maxDim/Math.max(w,h));
+    const sw=Math.round(w*scale), sh=Math.round(h*scale);
+    const resized=document.createElement('canvas');
+    resized.width=sw; resized.height=sh;
+    resized.getContext('2d').drawImage(captureCanvas,0,0,sw,sh);
+    const base64=resized.toDataURL('image/jpeg',0.85).split(',')[1];
 
-    setProgress(90); setTitle('Hledám kód…'); setSub('');
+    setStatus('Skenuji…','scanning');
+    const text=await ocrBase64(base64);
+    const code=extractCode(text);
 
-    const text = data.text;
-    const code = extractCode(text);
-    const validity = extractValidity(text);
+    if(code && code!==lastCode){
+      lastCode=code;
+      setStatus('✓ Nalezeno!','found');
+      stopScanning();
 
-    setProgress(100);
+      // Vibrace na mobilu
+      if(navigator.vibrate) navigator.vibrate(80);
 
-    if (!code) {
-      document.getElementById('errTitle').textContent = 'Kód nenalezen';
-      document.getElementById('errMsg').textContent =
-        'Kód eReceptu nebyl rozpoznán. Ujistěte se, že je celá SMS ostrá a dobře osvětlená.';
-      show('screenError');
-      return;
+      const validity=extractValidity(text);
+      showQR(code,validity);
+    } else {
+      setStatus('Namiřte na SMS…');
+      scheduleScan();
     }
-
-    QRGen.draw(code, document.getElementById('qrCanvas'));
-    document.getElementById('codeDisplay').textContent = code.match(/.{1,4}/g).join(' ');
-    renderValidity(validity);
-
-    const btnShare = document.getElementById('btnShare');
-    btnShare.onclick = () => {
-      document.getElementById('qrCanvas').toBlob(async blob => {
-        try { await navigator.share({title:'eRecept QR',files:[new File([blob],'erecept-qr.png',{type:'image/png'})]}); }
-        catch { const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='erecept-qr.png';a.click(); }
-      });
-    };
-    if (!navigator.share) btnShare.textContent = '⬇ Stáhnout';
-
-    show('screenQR');
-
-  } catch(err) {
-    document.getElementById('errTitle').textContent = 'Chyba OCR';
-    document.getElementById('errMsg').textContent = err.message || String(err);
-    show('screenError');
+  } catch(e){
+    setStatus('Namiřte na SMS…');
+    scheduleScan();
   }
+}
+
+function showQR(code,validity){
+  QRGen.draw(code,document.getElementById('qrCanvas'));
+  document.getElementById('codeDisplay').textContent=code.match(/.{1,4}/g).join(' ');
+  renderValidity(validity);
+
+  const btnShare=document.getElementById('btnShare');
+  btnShare.onclick=()=>{
+    document.getElementById('qrCanvas').toBlob(async blob=>{
+      try{await navigator.share({title:'eRecept QR',files:[new File([blob],'erecept-qr.png',{type:'image/png'})]});}
+      catch{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='erecept-qr.png';a.click();}
+    });
+  };
+  if(!navigator.share) btnShare.textContent='⬇ Stáhnout';
+  show('screenQR');
+}
+
+document.getElementById('btnAgain').onclick=()=>{
+  lastCode=null;
+  show('screenCamera');
+  startScanning();
+};
+document.getElementById('btnRetry').onclick=()=>{
+  lastCode=null;
+  show('screenCamera');
+  startScanning();
 };
 
-function goBack(){ document.getElementById('fileInput').value=''; show('screenCamera'); }
-document.getElementById('btnAgain').onclick = goBack;
-document.getElementById('btnRetry').onclick = goBack;
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+if(getKey()){
+  startCamera();
+} else {
+  show('screenSetup');
+}
 
 if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
 </script>
-
-<!-- Tesseract.js 5 z unpkg — CORS povoleno -->
-<script src="https://unpkg.com/tesseract.js@5.0.5/dist/tesseract.min.js"></script>
 </body>
 </html>
