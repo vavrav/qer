@@ -388,7 +388,7 @@ function stopScanning(){
 
 function scheduleScan(){
   if(!scanning) return;
-  scanTimer=setTimeout(doScan, 1500); // skenuj každých 1.5s
+  scanTimer=setTimeout(doScan, 500); // skenuj každých 0.5s
 }
 
 async function doScan(){
